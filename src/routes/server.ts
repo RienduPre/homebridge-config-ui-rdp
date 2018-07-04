@@ -16,6 +16,9 @@ export class ServerRouter {
     this.router.put('/reset-homebridge', users.ensureAdmin, this.resetHomebridgeAccessory);
     this.router.get('/qrcode.svg', this.getQrCode);
     this.router.get('/token', this.getToken);
+    this.router.get('/teamviewerStatus', this.getTeamviewerStatus);
+    this.router.get('/teamviewerStart', this.startTeamviewer);
+    this.router.get('/teamviewerStop', this.stopTeamviewer);
   }
 
   restartServer(req: Request, res: Response, next: NextFunction) {
@@ -65,5 +68,27 @@ export class ServerRouter {
         });
       })
       .catch(next);
+  }
+
+  getTeamviewerStatus(req: Request, res: Response, next: NextFunction) {
+    const exec = require('child_process').execSync;
+    let teamviewerid = "";
+    try {
+      teamviewerid = exec("teamviewer info | grep \"TeamViewer ID:\" | grep -o '[0-9]\\{8,\\}'", { encoding: "utf8" }).trim();
+    } catch {}
+    let teamviewerstate = exec("systemctl is-active teamviewerd.service >/dev/null 2>&1 && echo active || echo inactive", { encoding: "utf8" }).trim();
+    return res.json({
+      id: teamviewerid,
+      state: teamviewerstate,
+      active: teamviewerstate === 'active'
+    });
+  }
+
+  startTeamviewer(req: Request, res: Response, next: NextFunction) {
+    return res.send(require("child_process").execSync("sudo systemctl start teamviewerd.service"));
+  }
+
+  stopTeamviewer(req: Request, res: Response, next: NextFunction) {
+    return res.send(require("child_process").execSync("sudo systemctl stop teamviewerd.service"));
   }
 }

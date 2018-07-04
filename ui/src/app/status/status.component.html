@@ -180,6 +180,37 @@
     </div>
     <!--/.Panel-->
 
+    <!--Panel-->
+    <div class="card card-body mb-3">
+      <h5 class="mb-0">TeamViewer</h5>
+      <div class="d-flex flex-row">
+        <div class="d-flex p-1">
+
+            <div class="p-3">
+                <i *ngIf="!teamviewer.state" class="material-icons status-circle bg-status-green spin">&#xE863;</i>
+                <i *ngIf="teamviewer.state && teamviewer.active" class="material-icons status-circle bg-status-green">&#xE8F4;</i>
+                <i *ngIf="teamviewer.state && !teamviewer.active" class="material-icons status-circle bg-yellow">&#xE8F5;</i>
+              </div>
+              <div class="align-self-center">
+                <span *ngIf="!teamviewer.state">Checking for status...</span>
+                <span *ngIf="teamviewer.state && !teamviewer.active">Enable TeamViewer for remote support.</span>
+                <span *ngIf="teamviewer.state && teamviewer.active">Teamviewer ID: <b>{{ teamviewer.id }}</b></span>
+                <br>
+                <span class="grey-text">TeamViewer is {{ teamviewer.state }}</span>
+              </div>
+              <div class="align-self-center p-3" *ngIf="teamviewer.state && teamviewer.active">
+                <button type="button" class="btn btn-red waves-effect waves-light" (click)="stopTeamviewer()">Disable</button>
+              </div>
+              <div class="align-self-center p-3" *ngIf="teamviewer.state && !teamviewer.active">
+                <button type="button" class="btn btn-red waves-effect waves-light" (click)="startTeamviewer()">Enable</button>
+              </div>
+    
+
+        </div>
+      </div>
+    </div>
+    <!--/.Panel-->
+
   </div>
 </div>
 

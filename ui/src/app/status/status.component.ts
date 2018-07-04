@@ -29,6 +29,7 @@ export class StatusComponent implements OnInit {
   public server: HomebridgeStatus = {};
   public stats: any = {};
   public homebridge: any = {};
+  public teamviewer: any = {};
 
   public loadedQrCode = false;
   public consoleStatus;
@@ -47,12 +48,14 @@ export class StatusComponent implements OnInit {
       this.ws.subscribe('status');
       this.consoleStatus = 'up';
       this.checkHomebridgeVersion();
+      this.checkTeamviewer();
     }
 
     this.onOpen = this.ws.open.subscribe(() => {
       this.ws.subscribe('status');
       this.consoleStatus = 'up';
       this.checkHomebridgeVersion();
+      this.checkTeamviewer();
     });
 
     // listen for to stats data
@@ -84,6 +87,12 @@ export class StatusComponent implements OnInit {
     );
   }
 
+  checkTeamviewer() {
+    return this.$api.getTeamviewerStatus().subscribe(
+      data => this.teamviewer = data,
+    );
+  }
+
   getQrCodeImage() {
     if (!this.loadedQrCode) {
       return this.$api.getQrCode().subscribe(
@@ -110,6 +119,24 @@ export class StatusComponent implements OnInit {
       this.onMessageStats.unsubscribe();
       this.onMessageServer.unsubscribe();
     } catch (e) { }
+  }
+
+  stopTeamviewer() {
+    if (confirm("Are you sure you want to stop TeamViewer?")) {
+      this.teamviewer = {};
+      this.$api.stopTeamviewer().subscribe(d => {
+        setTimeout(() => this.checkTeamviewer(), 1000);
+      });
+    }
+  }
+
+  startTeamviewer() {
+    if (confirm("Are you sure you want to start TeamViewer?")) {
+      this.teamviewer = {};
+      this.$api.startTeamviewer().subscribe(d => {
+        setTimeout(() => this.checkTeamviewer(), 1000);
+      });
+    }
   }
 
 }

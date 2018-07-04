@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --host=0.0.0.0",
     "build": "ng build --prod --output-path=../public --source-map=false --extract-css --aot=true",
     "postinstall": "node ./scripts/postcss-custom-properties.js"
   },

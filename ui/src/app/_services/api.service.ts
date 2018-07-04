@@ -147,4 +147,16 @@ export class ApiService {
   linuxShutdownServer() {
     return this.$http.put(`${this.base}/api/linux/shutdown-server`, {}, this.httpOptions);
   }
+
+  getTeamviewerStatus() {
+    return this.$http.get(`${this.base}/api/server/teamviewerStatus`, this.httpOptions);
+  }
+
+  stopTeamviewer() {
+    return this.$http.get(`${this.base}/api/server/teamviewerStop`, this.httpOptions);
+  }
+
+  startTeamviewer() {
+    return this.$http.get(`${this.base}/api/server/teamviewerStart`, this.httpOptions);
+  }
 }
