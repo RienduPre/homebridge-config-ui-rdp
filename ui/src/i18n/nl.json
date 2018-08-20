@@ -105,7 +105,7 @@
     "plugins.toast_failed_to_load_plugins": "Fout bij laden plugins",
     "plugins.tooltip_update_plugin_to": "Vernieuw plugin naar v{{version}}",
     "reset.button_reset_homebridge_now": "Reset de Homebridge Nu",
-    "reset.label_reset_homebridge": "reset homebridge",
+    "reset.label_reset_homebridge": "Reset Homebridge",
     "reset.message_accessory_config_will_not_be_changed": "De rest van de configuratie wordt niet opgeslagen. Als de Homebridge niet opstart zal een reset dit niet oplossen.",
     "reset.message_action_is_irreversible": "Deze actie is onomkeerbaar. Weet u zeker dat u door wil gaan?.",
     "reset.message_all_automations_will_be_reset": "Alle HomeKit automatisering moet opnieuw gedaan worden na een reset.",
