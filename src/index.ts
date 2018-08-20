@@ -9,7 +9,7 @@ let homebridge;
 
 export = (api) => {
   homebridge = api;
-  homebridge.registerPlatform('homebridge-config-ui-x', 'config', HomebridgeConfigUi);
+  homebridge.registerPlatform('homebridge-config-ui-rdp', 'config', HomebridgeConfigUi);
 };
 
 class HomebridgeConfigUi {
@@ -46,7 +46,7 @@ class HomebridgeConfigUi {
   fork(setup) {
     const ui = child_process.fork(path.resolve(__dirname, 'bin/fork'));
 
-    this.log(`Spawning homebridge-config-ui-x with PID`, ui.pid);
+    this.log(`Spawning homebridge-config-ui-rdp with PID`, ui.pid);
 
     ui.on('message', (message) => {
       if (message === 'ready') {

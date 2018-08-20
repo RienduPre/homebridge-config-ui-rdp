@@ -159,7 +159,7 @@ export class LogsWssHandler {
 
   logNotConfigured() {
     this.send(color.red(`Cannot show logs. "log" option is not configured correctly in your Homebridge config.json file.\r\n\r\n`));
-    this.send(color.cyan(`See https://github.com/oznu/homebridge-config-ui-x#log-viewer-configuration for instructions.\r\n`));
+    this.send(color.cyan(`See https://github.com/RienduPre/homebridge-config-ui-rdp#log-viewer-configuration for instructions.\r\n`));
   }
 
   tailLog(command) {
@@ -183,7 +183,7 @@ export class LogsWssHandler {
         this.send('\n\r');
         this.send(color.red(`The log tail command "${cmd}" exited with code ${code}.\n\r`));
         this.send(color.red(`Please check the command in your config.json is correct.\n\r\n\r`));
-        this.send(color.cyan(`See https://github.com/oznu/homebridge-config-ui-x#log-viewer-configuration for instructions.\r\n`));
+        this.send(color.cyan(`See https://github.com/RienduPre/homebridge-config-ui-rdp#log-viewer-configuration for instructions.\r\n`));
       } catch (e) {
         // the client socket probably closed
       }

@@ -84,7 +84,7 @@ class DockerRouter {
                     resp.push(`${key}="${String(req.body[key]).trim()}"`);
                 }
             });
-            resp.push('### This file is managed by homebridge-config-ui-x ###');
+            resp.push('### This file is managed by homebridge-config-ui-rdp ###');
             yield fs.writeFile(this.dockerEnvPath, resp.join('\n') + '\n');
             res.json({ ok: true });
         });

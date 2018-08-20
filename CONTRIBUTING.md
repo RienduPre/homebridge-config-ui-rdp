@@ -6,16 +6,16 @@ This project is written in [TypeScript](https://www.typescriptlang.org/) and use
 
 ## Getting Setup
 
-First, remove any globally installed versions of `homebridge-config-ui-x` you may have installed on your development machine:
+First, remove any globally installed versions of `homebridge-config-ui-rdp` you may have installed on your development machine:
 
 ```
-npm uninstall -g homebridge-config-ui-x
+npm uninstall -g homebridge-config-ui-rdp
 ```
 
 Fork, then clone the repo:
 
 ```
-git clone git@github.com:your-username/homebridge-config-ui-x.git
+git clone git@github.com:your-username/homebridge-config-ui-rdp.git
 ```
 
 Install npm dependencies for the plugin:
@@ -42,7 +42,7 @@ Symlink your development directory to global:
 npm link
 ```
 
-You can now run `homebridge` and it will use `homebridge-config-ui-x` from your development directory. Make sure you have setup `homebridge-config-ui-x` in your `config.json` and that the plugin is configured to run on port `8080`. Here is a good template to use:
+You can now run `homebridge` and it will use `homebridge-config-ui-rdp` from your development directory. Make sure you have setup `homebridge-config-ui-rdp` in your `config.json` and that the plugin is configured to run on port `8080`. Here is a good template to use:
 
 ```json
 "platforms": [
@@ -68,6 +68,6 @@ You should now be able to navigate to `https://localhost:4200` in your browser w
 
 Additional language translations, or improvments to existing translations are most welcome.  Translations can be found here: 
 
-https://github.com/oznu/homebridge-config-ui-x/tree/master/ui/src/i18n
+https://github.com/RienduPre/homebridge-config-ui-rdp/tree/master/ui/src/i18n
 
 [BabelEdit](https://www.codeandweb.com/babeledit) is a useful tool that will help editing or creating a new language file. Where possible, please derive new translations from the English version.

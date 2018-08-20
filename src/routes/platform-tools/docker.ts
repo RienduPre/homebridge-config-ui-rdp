@@ -93,7 +93,7 @@ export class DockerRouter {
       }
     });
 
-    resp.push('### This file is managed by homebridge-config-ui-x ###');
+    resp.push('### This file is managed by homebridge-config-ui-rdp ###');
     await fs.writeFile(this.dockerEnvPath, resp.join('\n') + '\n');
     res.json({ok: true});
   }

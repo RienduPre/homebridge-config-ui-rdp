@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -8,7 +7,9 @@ import { ToastrService } from 'ngx-toastr';
 import 'brace/theme/xcode';
 import 'brace/mode/json';
 
+import { environment } from '../../environments/environment';
 import { ApiService } from '../_services/api.service';
+import { AuthService } from '../_services/auth.service';
 import { MobileDetectService } from '../_services/mobile-detect.service';
 import { ConfigRestoreBackupComponent } from './config.restore-backup.component';
 
@@ -19,31 +20,33 @@ import { ConfigRestoreBackupComponent } from './config.restore-backup.component'
 export class ConfigComponent implements OnInit {
   @Input() homebridgeConfig;
   public saveInProgress: boolean;
-  backupConfigHref: SafeUrl;
-  options: any = { printMargin: false };
+  public isMobile: any = false;
+  public backupUrl: string;
+  public options: any = { printMargin: false };
 
   constructor(
     private $api: ApiService,
+    private $auth: AuthService,
     private $md: MobileDetectService,
     public toastr: ToastrService,
     private translate: TranslateService,
-    private modalService: NgbModal,
-    private sanitizer: DomSanitizer
+    private modalService: NgbModal
   ) {
+    this.backupUrl = environment.apiBaseUrl + '/api/backup/config.json?token=' + this.$auth.user.token;
+    this.isMobile = this.$md.detect.mobile();
+
     // remove editor gutter on small screen devices
-    if ($md.detect.phone()) {
+    if (this.$md.detect.phone()) {
       this.options.showGutter = false;
     }
 
     // make font size 16px on touch devices to prevent zoom
-    if ($md.detect.mobile()) {
+    if (this.$md.detect.mobile()) {
       this.options.fontSize = '16px';
     }
   }
 
-  ngOnInit() {
-    this.generateBackupConfigLink();
-  }
+  ngOnInit() {}
 
   async onSave() {
     if (this.saveInProgress) {
@@ -94,17 +97,10 @@ export class ConfigComponent implements OnInit {
       .then(data => {
         this.toastr.success(this.translate.instant('config.toast_config_saved'), this.translate.instant('toast.title_success'));
         this.homebridgeConfig = JSON.stringify(data, null, 4);
-        this.generateBackupConfigLink();
       })
       .catch(err => {
         this.toastr.error(this.translate.instant('config.toast_failed_to_save_config'), this.translate.instant('toast.title_error'));
       });
-  }
-
-  generateBackupConfigLink() {
-    const theJSON = this.homebridgeConfig;
-    const uri = this.sanitizer.bypassSecurityTrustUrl('data:text/json;charset=UTF-8,' + encodeURIComponent(theJSON));
-    this.backupConfigHref = uri;
   }
 
   onRestore() {
@@ -120,7 +116,6 @@ export class ConfigComponent implements OnInit {
             this.translate.instant('config.toast_title_backup_loaded')
           );
           this.homebridgeConfig = data;
-          this.generateBackupConfigLink();
         },
         err => this.toastr.error(err.error.message || 'Failed to load config backup', this.translate.instant('toast.title_error'))
       );

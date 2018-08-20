@@ -69,6 +69,6 @@ class HomebridgeConfigUi {
 }
 module.exports = (api) => {
     homebridge = api;
-    homebridge.registerPlatform('homebridge-config-ui-x', 'config', HomebridgeConfigUi);
+    homebridge.registerPlatform('homebridge-config-ui-rdp', 'config', HomebridgeConfigUi);
 };
 //# sourceMappingURL=index.js.map

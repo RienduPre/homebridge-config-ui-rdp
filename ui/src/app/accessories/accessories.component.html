@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <div [dragula]='"rooms-bag"' [dragulaModel]='rooms'>
+  <div [dragula]='"rooms-bag"' [(dragulaModel)]='rooms'>
     <div *ngFor="let room of rooms">
       <div class="row" *ngIf="!isMobile || room.services.length">
         <div class="col-md-12">
@@ -18,8 +18,8 @@
         </div>
       </div>
       <div class="row mb-4">
-        <div class="col-md-12 d-flex flex-wrap noselect services-bag" *ngIf="room.services.length" [dragula]='"services-bag"' [dragulaModel]='room.services'>
-          <div *ngFor="let service of room.services" [ngSwitch]="service.type">
+        <div class="col-md-12 d-flex flex-wrap noselect services-bag" *ngIf="room.services.length" [dragula]='"services-bag"' [(dragulaModel)]='room.services'>
+          <div *ngFor="let service of room.services" [ngSwitch]="service.type" (contextmenu)="showAccessoryInformation(service)">
             <app-switch *ngSwitchCase="'Switch'" [service]="service">Switch</app-switch>
             <app-thermostat *ngSwitchCase="'Thermostat'" [service]="service">Thermostat</app-thermostat>
             <app-outlet *ngSwitchCase="'Outlet'" [service]="service">Outlet</app-outlet>
@@ -35,7 +35,7 @@
             <app-unknown *ngSwitchDefault [service]="service">{{ service.humanType }}</app-unknown>
           </div>
         </div>
-        <div class="col-md-12 d-flex flex-wrap noselect" *ngIf="!room.services.length && !isMobile" [dragula]='"services-bag"' [dragulaModel]='room.services'>
+        <div class="col-md-12 d-flex flex-wrap noselect" *ngIf="!room.services.length && !isMobile" [dragula]='"services-bag"' [(dragulaModel)]='room.services'>
           <app-drag-here-placeholder class="no-drag"></app-drag-here-placeholder>
         </div>
       </div>
@@ -51,7 +51,7 @@
         <p [innerHTML]="'accessories.message_must_use_insecure_mode' | translate">To control your accessories you must be running Homebridge in <strong>insecure</strong> mode.</p>
         <p>
           <span [translate]="'accessories.message_please_see'">Please see</span>
-          <a target="_blank" href="https://github.com/oznu/homebridge-config-ui-x/wiki/Enabling-Accessory-Control"> https://github.com/oznu/homebridge-config-ui-x/wiki/Enabling-Accessory-Control </a>
+          <a target="_blank" href="https://github.com/RienduPre/homebridge-config-ui-rdp/wiki/Enabling-Accessory-Control"> https://github.com/RienduPre/homebridge-config-ui-rdp/wiki/Enabling-Accessory-Control </a>
           <span [translate]="'accessories.message_for_more_information'">for more information.</span>
         </p>
       </div>

@@ -77,6 +77,22 @@ class AuthMiddleware {
             return res.sendStatus(401);
         }
     }
+    queryTokenAuthHandler(req, res, next) {
+        if (req.query.token) {
+            return users_1.users.verifyJwt(req.query.token)
+                .then((user) => {
+                if (user) {
+                    return next();
+                }
+                else {
+                    return res.sendStatus(401);
+                }
+            });
+        }
+        else {
+            return res.sendStatus(401);
+        }
+    }
 }
 exports.AuthMiddleware = AuthMiddleware;
 //# sourceMappingURL=auth.js.map

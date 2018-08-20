@@ -11,6 +11,7 @@ import { AuthService } from '../_services/auth.service';
 import { ApiService } from '../_services/api.service';
 import { MobileDetectService } from '../_services/mobile-detect.service';
 import { AddRoomModalComponent } from './add-room-modal/add-room-modal.component';
+import { InfoModalComponent } from './info-modal/info-modal.component';
 
 @Component({
   selector: 'app-accessories',
@@ -35,20 +36,20 @@ export class AccessoriesComponent implements OnInit {
     private $api: ApiService,
     private $md: MobileDetectService
   ) {
-    this.isMobile = $md.detect.mobile();
+    this.isMobile = this.$md.detect.mobile();
 
     // disable drag and drop for everything except the room title
-    dragulaService.setOptions('rooms-bag', {
+    dragulaService.createGroup('rooms-bag', {
       moves: (el, container, handle) => !this.isMobile && handle.classList.contains('drag-handle')
     });
 
     // disable drag and drop for the .no-drag class
-    dragulaService.setOptions('services-bag', {
+    dragulaService.createGroup('services-bag', {
       moves: (el, source, handle, sibling) => !this.isMobile && !el.classList.contains('no-drag')
     });
 
     // save the room and service layout
-    dragulaService.drop.subscribe(() => {
+    dragulaService.drop().subscribe(() => {
       setTimeout(() => {
         this.saveLayout();
       });
@@ -238,6 +239,16 @@ export class AccessoriesComponent implements OnInit {
         };
       }
     });
+  }
+
+  showAccessoryInformation(service) {
+    const ref = this.modalService.open(InfoModalComponent, {
+      size: 'lg',
+    });
+
+    ref.componentInstance.service = service;
+
+    return false;
   }
 
   // tslint:disable-next-line:use-life-cycle-interface

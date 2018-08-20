@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-/* This file enables homebridge-config-ui-x to be run independently of the main homebridge process */
-process.title = 'homebridge-config-ui-x';
+/* This file enables homebridge-config-ui-rdp to be run independently of the main homebridge process */
+process.title = 'homebridge-config-ui-rdp';
 
 import 'source-map-support/register';
 
@@ -73,7 +73,7 @@ class StandaloneUI {
     if (semver.satisfies(process.env.CONFIG_UI_VERSION, '>=3.5.5') && fs.existsSync(path.resolve(this.setup.configPath))) {
       const homebridgeConfig = await fs.readJson(this.setup.configPath);
       if (homebridgeConfig && homebridgeConfig.platforms) {
-        const config = homebridgeConfig.platforms.find(x => x.platform === 'config' || x.platform === 'homebridge-config-ui-x.config');
+        const config = homebridgeConfig.platforms.find(x => x.platform === 'config' || x.platform === 'homebridge-config-ui-rdp.config');
         if (config) {
           this.setup.config = config;
         }
@@ -109,7 +109,7 @@ class StandaloneUI {
       method: 'file',
       path: '/homebridge/logs/homebridge.log',
     };
-    this.setup.config.restart = 'killall -9 homebridge && killall -9 homebridge-config-ui-x';
+    this.setup.config.restart = 'killall -9 homebridge && killall -9 homebridge-config-ui-rdp';
     this.setup.config.homebridgeNpmPkg = process.env.HOMEBRIDGE_CONFIG_UI_NPM_PKG || 'homebridge';
     this.setup.config.homebridgeFork = process.env.HOMEBRIDGE_CONFIG_UI_FORK || undefined;
     this.setup.config.homebridgeInsecure = (process.env.HOMEBRIDGE_INSECURE === '1');

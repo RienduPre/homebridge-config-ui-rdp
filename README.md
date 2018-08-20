@@ -1,5 +1,7 @@
-[![npm](https://img.shields.io/npm/v/homebridge-config-ui-x.svg)](https://www.npmjs.com/package/homebridge-config-ui-x) 
-[![npm](https://img.shields.io/npm/dt/homebridge-config-ui-x.svg)](https://www.npmjs.com/package/homebridge-config-ui-x)
+[![npm](https://img.shields.io/npm/v/homebridge-config-ui-rdp.svg)](https://www.npmjs.com/package/homebridge-config-ui-rdp) 
+[![npm](https://img.shields.io/npm/dt/homebridge-config-ui-rdp.svg)](https://www.npmjs.com/package/homebridge-config-ui-rdp)
+
+:gb: :de: :fr: :poland: :czech_republic: :ru:
 
 # Homebridge Config UI X
 
@@ -7,12 +9,12 @@ This is a plugin for [Homebridge](https://github.com/nfarina/homebridge). This i
 
 This plugin allows you to monitor, backup and configure your Homebridge server from a browser.
 
-[![Status](screenshots/homebridge-config-ui-x-accessories.png)](#accessory-control)
+[![Status](screenshots/homebridge-config-ui-rdp-accessories.png)](#accessory-control)
 
 ## Installation Instructions
 
 ```
-sudo npm install -g --unsafe-perm homebridge-config-ui-x
+sudo npm install -g --unsafe-perm homebridge-config-ui-rdp
 ```
 
 Once you have installed and configured the plugin you can access the interface via http://localhost:8080. 
@@ -47,7 +49,7 @@ Add this to your homebridge `config.json` file
 
 The plugin allows you to view and control some types of Homebridge accessories from your web browser. 
 
-To [enable accessory control](https://github.com/oznu/homebridge-config-ui-x/wiki/Enabling-Accessory-Control) you must be running Homebridge in insecure mode:
+To [enable accessory control](https://github.com/homebridge-config-ui-rdp/homebridge-config-ui-rdp/wiki/Enabling-Accessory-Control) you must be running Homebridge in insecure mode:
 
 ```
 homebridge -I
@@ -55,7 +57,7 @@ homebridge -I
 
 *Insecure mode, as it's name suggests, is not secure. Anyone with network access to your Homebridge server port and pin will be able to control your accessories. Unless exposing the Homebridge port to the internet, this will generally not be a problem as access will be limited to people already on your local network. Remote access via a home hub (Apple TV, iPad, HomePod etc.) will still be secure. Enable at your own risk.*
 
-Not all accessory types are supported. See [this issue](https://github.com/oznu/homebridge-config-ui-x/issues/47) for a full list of supported accessory types.
+Not all accessory types are supported. See [this issue](https://github.com/homebridge-config-ui-rdp/homebridge-config-ui-rdp/issues/47) for a full list of supported accessory types.
 
 ## Log Viewer Configuration
 
@@ -187,30 +189,30 @@ Or if using a **PKCS#12** certificate you can setup SSL like this:
 
 This shows you that the services are running. It also has your HomeKit pin.
 
-![Status](screenshots/homebridge-config-ui-x-status.png)
+![Status](screenshots/homebridge-config-ui-rdp-status.png)
 
 ### Log Screen
 
 This shows you the rolling log. This is helpful for troubleshooting.
 
-![Log](screenshots/homebridge-config-ui-x-logs.png)
+![Log](screenshots/homebridge-config-ui-rdp-logs.png)
 
 ### Plugin Screen
 
 This shows you the currently installed plugins and allows you to install, remove and upgrade plugins.
 
-![Log](screenshots/homebridge-config-ui-x-plugins.png)
+![Log](screenshots/homebridge-config-ui-rdp-plugins.png)
 
 When installing, removing or upgrading plugins the output is show in the browser to help troubleshoot any issues.
 
-![Log](screenshots/homebridge-config-ui-x-plugins-install.png)
+![Log](screenshots/homebridge-config-ui-rdp-plugins-install.png)
 
 
 ### Configuration Screen
 
 And finally the configuration screen allows you to modify your Homebridge settings and your platforms and accessories.
 
-![Config](screenshots/homebridge-config-ui-x-config.png)
+![Config](screenshots/homebridge-config-ui-rdp-config.png)
 
 # Supported Browsers
 
@@ -236,15 +238,15 @@ Make sure you installed the package with `sudo` and used the  `--unsafe-perm` fl
 
 ```shell
 # cleanup
-sudo npm uninstall -g homebridge-config-ui-x
+sudo npm uninstall -g homebridge-config-ui-rdp
 
 # reinstall
-sudo npm install -g --unsafe-perm homebridge-config-ui-x
+sudo npm install -g --unsafe-perm homebridge-config-ui-rdp
 ```
 
 #### 2. Accessories tab missing
 
-If the Accessories tab is not show then you are not running Homebridge in insecure mode. See the [Enabling Accessory Control](https://github.com/oznu/homebridge-config-ui-x/wiki/Enabling-Accessory-Control) wiki for details. If you have just enabled insecure mode make sure you have restarted Homebridge and refreshed the page in your browser.
+If the Accessories tab is not show then you are not running Homebridge in insecure mode. See the [Enabling Accessory Control](https://github.com/homebridge-config-ui-rdp/homebridge-config-ui-rdp/wiki/Enabling-Accessory-Control) wiki for details. If you have just enabled insecure mode make sure you have restarted Homebridge and refreshed the page in your browser.
 
 #### 3. Ask on Slack
 

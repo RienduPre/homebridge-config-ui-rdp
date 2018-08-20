@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-process.title = 'homebridge-config-ui-x';
+process.title = 'homebridge-config-ui-rdp';
 require("source-map-support/register");
 const fs = require("fs-extra");
 const path = require("path");
@@ -59,7 +59,7 @@ class StandaloneUI {
             if (semver.satisfies(process.env.CONFIG_UI_VERSION, '>=3.5.5') && fs.existsSync(path.resolve(this.setup.configPath))) {
                 const homebridgeConfig = yield fs.readJson(this.setup.configPath);
                 if (homebridgeConfig && homebridgeConfig.platforms) {
-                    const config = homebridgeConfig.platforms.find(x => x.platform === 'config' || x.platform === 'homebridge-config-ui-x.config');
+                    const config = homebridgeConfig.platforms.find(x => x.platform === 'config' || x.platform === 'homebridge-config-ui-rdp.config');
                     if (config) {
                         this.setup.config = config;
                     }
@@ -91,7 +91,7 @@ class StandaloneUI {
             method: 'file',
             path: '/homebridge/logs/homebridge.log',
         };
-        this.setup.config.restart = 'killall -9 homebridge && killall -9 homebridge-config-ui-x';
+        this.setup.config.restart = 'killall -9 homebridge && killall -9 homebridge-config-ui-rdp';
         this.setup.config.homebridgeNpmPkg = process.env.HOMEBRIDGE_CONFIG_UI_NPM_PKG || 'homebridge';
         this.setup.config.homebridgeFork = process.env.HOMEBRIDGE_CONFIG_UI_FORK || undefined;
         this.setup.config.homebridgeInsecure = (process.env.HOMEBRIDGE_INSECURE === '1');

@@ -12,6 +12,7 @@ const login_1 = require("./routes/login");
 const settings_1 = require("./routes/settings");
 const server_1 = require("./routes/server");
 const config_1 = require("./routes/config");
+const backup_1 = require("./routes/backup");
 const packages_1 = require("./routes/packages");
 const accessories_1 = require("./routes/accessories");
 const platform_tools_1 = require("./routes/platform-tools");
@@ -65,6 +66,8 @@ class ExpressServer {
         this.app.use(bodyParser.json());
         this.app.use('/api/login', new login_1.LoginRouter().router);
         this.app.use('/api/settings', new settings_1.SettingsRouter().router);
+        // query token auth for backup url route
+        this.app.use('/api/backup/config.json', this.auth.queryTokenAuthHandler, new backup_1.BackupRouter().router);
         // force authentication on all other /api routes
         this.app.use('/api', this.auth.main);
         // authenticated routes

@@ -1,4 +1,4 @@
-process.title = 'homebridge-config-ui-x';
+process.title = 'homebridge-config-ui-rdp';
 
 import 'source-map-support/register';
 
