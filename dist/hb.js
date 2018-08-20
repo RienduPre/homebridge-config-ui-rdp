@@ -201,17 +201,17 @@ class HomebridgeUI {
             // load config file
             const config = yield fs.readJson(this.configPath);
             // generate new random username and pin
-            if (config.bridge) {
-                config.bridge.pin = this.generatePin();
-                config.bridge.username = this.generateUsername();
-                this.log(`Homebridge Reset: New Username: ${config.bridge.username}`);
-                this.log(`Homebridge Reset: New Pin: ${config.bridge.pin}`);
-                // save config file
-                yield this.updateConfig(config);
-            }
-            else {
-                this.error('Homebridge Reset: Could not reset homebridge username or pin. Config format invalid.');
-            }
+            // if (config.bridge) {
+            //    config.bridge.pin = this.generatePin();
+            //    config.bridge.username = this.generateUsername();
+            //    this.log(`Homebridge Reset: New Username: ${config.bridge.username}`);
+            //   this.log(`Homebridge Reset: New Pin: ${config.bridge.pin}`);
+            //    // save config file
+            //    yield this.updateConfig(config);
+            // }
+            // else {
+            //    this.error('Homebridge Reset: Could not reset homebridge username or pin. Config format invalid.');
+            // }
             // remove accessories and persist directories
             yield fs.remove(path.resolve(this.storagePath, 'accessories'));
             yield fs.remove(path.resolve(this.storagePath, 'persist'));
