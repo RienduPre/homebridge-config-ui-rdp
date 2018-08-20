@@ -9,8 +9,6 @@ This is a plugin for [Homebridge](https://github.com/nfarina/homebridge). This i
 
 This plugin allows you to monitor, backup and configure your Homebridge server from a browser.
 
-[![Status](screenshots/homebridge-config-ui-rdp-accessories.png)](#accessory-control)
-
 ## Installation Instructions
 
 ```
