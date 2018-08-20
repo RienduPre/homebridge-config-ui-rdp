@@ -1,15 +1,13 @@
 [![npm](https://img.shields.io/npm/v/homebridge-config-ui-rdp.svg)](https://www.npmjs.com/package/homebridge-config-ui-rdp) 
 [![npm](https://img.shields.io/npm/dt/homebridge-config-ui-rdp.svg)](https://www.npmjs.com/package/homebridge-config-ui-rdp)
 
-:gb: :de: :fr: :poland: :czech_republic: :ru:
+:gb: :de: :fr: :netherlands: :belgium: :poland: :czech_republic: :ru:
 
-# Homebridge Config UI X
+# Homebridge Config UI RDP
 
-This is a plugin for [Homebridge](https://github.com/nfarina/homebridge). This is a fork of the work originally done by [mkellsy](https://github.com/mkellsy/homebridge-config-ui).
+This is a plugin for [Homebridge](https://github.com/nfarina/homebridge). This is a fork of the work originally done by [oznu](https://github.com/oznu/homebridge-config-ui-x).
 
 This plugin allows you to monitor, backup and configure your Homebridge server from a browser.
-
-[![Status](screenshots/homebridge-config-ui-rdp-accessories.png)](#accessory-control)
 
 ## Installation Instructions
 
