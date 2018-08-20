@@ -1,7 +1,7 @@
 [![npm](https://img.shields.io/npm/v/homebridge-config-ui-rdp.svg)](https://www.npmjs.com/package/homebridge-config-ui-rdp) 
 [![npm](https://img.shields.io/npm/dt/homebridge-config-ui-rdp.svg)](https://www.npmjs.com/package/homebridge-config-ui-rdp)
 
-:gb: :de: :fr: :nld: :be: :poland: :czech_republic: :ru:
+:gb: :de: :fr: :netherlands: :belgium: :poland: :czech_republic: :ru:
 
 # Homebridge Config UI RDP
 
