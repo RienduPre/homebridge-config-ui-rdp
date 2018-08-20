@@ -42,7 +42,7 @@ class HomebridgeConfigUi {
      */
     fork(setup) {
         const ui = child_process.fork(path.resolve(__dirname, 'bin/fork'));
-        this.log(`Spawning homebridge-config-ui-x with PID`, ui.pid);
+        this.log(`Spawning homebridge-config-ui-rdp with PID`, ui.pid);
         ui.on('message', (message) => {
             if (message === 'ready') {
                 ui.send(setup);
