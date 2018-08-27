@@ -198,10 +198,10 @@
                 <br>
                 <span class="grey-text">TeamViewer is {{ teamviewer.state }}</span>
               </div>
-              <div class="align-self-center p-3" *ngIf="teamviewer.state && teamviewer.active">
+              <div class="align-self-center p-3" *ngIf="teamviewer.state && teamviewer.active && teamviewer.state !== 'uninstalled'">
                 <button type="button" class="btn btn-red waves-effect waves-light" (click)="stopTeamviewer()">Disable</button>
               </div>
-              <div class="align-self-center p-3" *ngIf="teamviewer.state && !teamviewer.active">
+              <div class="align-self-center p-3" *ngIf="teamviewer.state && !teamviewer.active && teamviewer.state !== 'uninstalled'">
                 <button type="button" class="btn btn-red waves-effect waves-light" (click)="startTeamviewer()">Enable</button>
               </div>
     

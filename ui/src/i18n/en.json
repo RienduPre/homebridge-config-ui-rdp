@@ -105,7 +105,7 @@
     "plugins.toast_failed_to_load_plugins": "Failed to load plugins",
     "plugins.tooltip_update_plugin_to": "Update plugin to v{{version}}",
     "reset.button_reset_homebridge_now": "Reset Homebridge Now",
-    "reset.label_reset_homebridge": "reset homebridge",
+    "reset.label_reset_homebridge": "Reset Homebridge",
     "reset.message_accessory_config_will_not_be_changed": "The rest of your config will not be changed. If Homebridge is not starting due to a bad config a reset will not fix it.",
     "reset.message_action_is_irreversible": "This action is irreversible. Please read carefully before proceeding.",
     "reset.message_all_automations_will_be_reset": "All automations and will need to be reconfigured after a reset.",

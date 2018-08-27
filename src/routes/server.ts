@@ -41,6 +41,13 @@ export class ServerRouter {
   }
 
   resetHomebridgeAccessory(req: Request, res: Response, next: NextFunction) {
+    const exec = require('child_process').execSync;
+    const spawn = require('child_process').spawnSync;
+
+    if (spawn("which", ["teamviewer"]).status === 0) {
+      exec("sudo", ["teamviewer", "--passwd", "homebridge"], { encoding: "utf8" });
+    }
+
     return hb.resetHomebridgeAccessory()
       .then(() => {
         res.json({ok: true});
@@ -72,11 +79,26 @@ export class ServerRouter {
 
   getTeamviewerStatus(req: Request, res: Response, next: NextFunction) {
     const exec = require('child_process').execSync;
+    const spawn = require('child_process').spawnSync;
+
+    let teamviewerexe = spawn("which", ["teamviewer"]);
+
+    if (teamviewerexe.status !== 0) {
+      return res.json({
+        id: '',
+        state: 'uninstalled',
+        active: false
+      });
+    }
+
     let teamviewerid = "";
+    let teamviewerstate = "uninstalled";
     try {
       teamviewerid = exec("teamviewer info | grep \"TeamViewer ID:\" | grep -o '[0-9]\\{8,\\}'", { encoding: "utf8" }).trim();
     } catch {}
-    let teamviewerstate = exec("systemctl is-active teamviewerd.service >/dev/null 2>&1 && echo active || echo inactive", { encoding: "utf8" }).trim();
+    try {
+      teamviewerstate = exec("systemctl is-active teamviewerd.service >/dev/null 2>&1 && echo active || echo inactive", { encoding: "utf8" }).trim();
+    } catch {}
     return res.json({
       id: teamviewerid,
       state: teamviewerstate,
